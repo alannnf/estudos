@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Filter</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="gc=chrome">
+	<script type="text/javascript">
+
+		function myFilter(){
+
+			let input, filter, ul, li, a, i, txtValue;
+
+			input = document.getElementById('myInput');
+			filter = input.value.toUpperCase();
+			ul = document.getElementById('myUL');
+			li = ul.getElementsByTagName('li');
+
+			for (i = 0; i < li.length; i++) {
+				a = li[i].getElementsByTagName('a')[0];
+				txtValue = a.textContent || a.innerText;
+
+				if (txtValue.toUpperCase().indexOf(filter) > -1){
+					li[i].style.display = '';
+				} else {
+					li[i].style.display = 'none';
+				}
+			}
+		}
+
+	</script>
+	<style type="text/css">
+		.container{
+			width: 900px;
+			margin: auto;
+			padding-top: 30px;
+		}
+		#myInput{
+			width: 90%;
+			font-size: 16px;
+			padding: 12px 20px 12px 40px;
+			border: 1px solid #ddd;
+			margin-bottom: 12px;
+			outline: none;
+		}
+		#myUL{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		#myUL li a {
+			display: block;
+			border: 1px solid #ddd;
+			margin-top: -1px;
+			background-color: #f6f6f6;
+			padding: 12px;
+			text-decoration: none;
+			font-size: 18px;
+			color: #000;
+		}
+		#myUL li a:hover:not(.header){
+			background-color: #eee;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>Portifólio</h2>
+
+		<input type="text" id="myInput" onkeyup="myFilter()" placeholder="Pesquisa meus trabalhos...">
+
+		<ul id="myUL">
+			<li><a href="#">site 1</a></li>
+			<li><a href="#">site 2</a></li>
+			<li><a href="#">site 3</a></li> 
+			<li><a href="#">site 4</a></li>
+			<li><a href="#">site 5</a></li>
+		</ul>
+	</div>
+</body>
+</html>
